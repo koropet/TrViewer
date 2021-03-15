@@ -1,0 +1,6 @@
+D:\TrViewer\TrViewer\TrViewer\bin\Debug\TrViewer.exe.config
+D:\TrViewer\TrViewer\TrViewer\bin\Debug\TrViewer.exe
+D:\TrViewer\TrViewer\TrViewer\bin\Debug\TrViewer.pdb
+D:\TrViewer\TrViewer\TrViewer\obj\Debug\TrViewer.csprojResolveAssemblyReference.cache
+D:\TrViewer\TrViewer\TrViewer\obj\Debug\TrViewer.exe
+D:\TrViewer\TrViewer\TrViewer\obj\Debug\TrViewer.pdb
