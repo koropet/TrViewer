@@ -54,9 +54,15 @@ namespace TrViewer
                 map.lines[i] = TRLine.Recognize(map.lines[i]);
                 Console.WriteLine(map.lines[i].GetType().ToString());
             }
-			
-			//stop magic
-			sw.Stop();
+            Console.WriteLine("Converting...");
+            for (int i = 0; i < map.lines.GetLength(0); i++)
+            {
+                map.lines[i] = map.lines[i].Convert();
+                Console.WriteLine(map.lines[i].GetType().ToString());
+            }
+
+            //stop magic
+            sw.Stop();
 			
 			Console.WriteLine("Time elapsed {0} ms", sw.ElapsedMilliseconds);
 			

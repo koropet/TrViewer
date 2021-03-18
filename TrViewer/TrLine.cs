@@ -54,6 +54,11 @@ namespace TrViewer
         {
             return string.Format("[TRLine SX={0}, SY={1}, EX={2}, EY={3}, R={4}, G={5}, B={6}, T={7}]", SX, SY, EX, EY, R, G, B, T);
         }
+        public virtual TRLine Convert()
+        {
+            return this;
+        }
+
         static public TRLine Recognize(TRLine input)
         {
             switch (input.T)
@@ -193,12 +198,22 @@ namespace TrViewer
         {
             T = 0;
         }
+        public override TRLine Convert()
+        {
+            T++;
+            return Recognize(this);
+        }
     }
     public class LowWall : TRLine
     {
         public LowWall(Point start, Point end, Color color) : base(start, end, color)
         {
             T = 1;
+        }
+        public override TRLine Convert()
+        {
+            T++;
+            return Recognize(this);
         }
     }
     public class MidWall : TRLine
@@ -207,6 +222,11 @@ namespace TrViewer
         {
             T = 2;
         }
+        public override TRLine Convert()
+        {
+            T += 32;
+            return Recognize(this);
+        }
     }
     public class TallWall : TRLine
     {
@@ -214,12 +234,22 @@ namespace TrViewer
         {
             T = 34;
         }
+        public override TRLine Convert()
+        {
+            T = 3;
+            return Recognize(this);
+        }
     }
     public class Arc : TRLine
     {
         public Arc(Point start, Point end, Color color) : base(start, end, color)
         {
             T = 3;
+        }
+        public override TRLine Convert()
+        {
+            T=0;
+            return Recognize(this);
         }
     }
     public class Rail : TRLine
@@ -229,6 +259,11 @@ namespace TrViewer
             color = Color.FromArgb(color.R, 0, 0);
             T = 4;
         }
+        public override TRLine Convert()
+        {
+            G = 128;
+            return Recognize(this);
+        }
     }
     public class StopRail : Rail
     {
@@ -236,12 +271,22 @@ namespace TrViewer
         {
             color = Color.FromArgb(color.R, 128, 0);
         }
+        public override TRLine Convert()
+        {
+            G = 192;
+            return Recognize(this);
+        }
     }
     public class LargeStopRail : Rail
     {
         public LargeStopRail(Point start, Point end, Color color) : base(start, end, color)
         {
             color = Color.FromArgb(color.R, 192, 0);
+        }
+        public override TRLine Convert()
+        {
+            G = 0; T = 36;
+            return Recognize(this);
         }
     }
     public class InterchangeRail : Rail
@@ -251,12 +296,22 @@ namespace TrViewer
             color = Color.FromArgb(color.R, 0, 0);
             T = 36;
         }
+        public override TRLine Convert()
+        {
+            G = 128;
+            return Recognize(this);
+        }
     }
     public class InterchangeStopRail : InterchangeRail
     {
         public InterchangeStopRail(Point start, Point end, Color color) : base(start, end, color)
         {
             color = Color.FromArgb(color.R, 128, 0);
+        }
+        public override TRLine Convert()
+        {
+            G = 192;
+            return Recognize(this);
         }
     }
     public class InterchangeLargeStopRail : InterchangeRail
@@ -265,6 +320,11 @@ namespace TrViewer
         {
             color = Color.FromArgb(color.R, 192, 0);
         }
+        public override TRLine Convert()
+        {
+            G = 0;T = 5;
+            return Recognize(this);
+        }
     }
     public class Trees : TRLine
     {
@@ -272,6 +332,11 @@ namespace TrViewer
         {
             //TODO in original game files, G and B components are random seed for tree generation
             T = 5;
+        }
+        public override TRLine Convert()
+        {
+            R = 1;
+            return Recognize(this);
         }
     }
     public class BushyTrees : Trees
@@ -282,6 +347,11 @@ namespace TrViewer
             T = 5;
             R = 1; G = 0; B = 0;
         }
+        public override TRLine Convert()
+        {
+            R = 2;
+            return Recognize(this);
+        }
     }
     public class DenseTrees : Trees
     {
@@ -290,6 +360,11 @@ namespace TrViewer
             //TODO in original game files, G and B components are random seed for tree generation
             T = 5;
             R = 2; G = 0; B = 0;
+        }
+        public override TRLine Convert()
+        {
+            R = 0;
+            return Recognize(this);
         }
     }
     public class Ground : TRLine
@@ -305,12 +380,22 @@ namespace TrViewer
         {
             T = 6;
         }
+        public override TRLine Convert()
+        {
+            T++;
+            return Recognize(this);
+        }
     }
     public class DoubleLinePosts : TRLine
     {
         public DoubleLinePosts(Point start, Point end) : base(start, end, Color.FromArgb(2, 0, 0))
         {
             T = 7;
+        }
+        public override TRLine Convert()
+        {
+            T++;
+            return Recognize(this);
         }
     }
     public class DoubleLinePostsroad : TRLine
@@ -319,6 +404,11 @@ namespace TrViewer
         {
             T = 8;
         }
+        public override TRLine Convert()
+        {
+            T++;
+            return Recognize(this);
+        }
     }
     public class DoubleLinePostsroadTrees : TRLine
     {
@@ -326,12 +416,22 @@ namespace TrViewer
         {
             T = 9;
         }
+        public override TRLine Convert()
+        {
+            T=6;
+            return Recognize(this);
+        }
     }
     public class Bridge : Rail
     {
         public Bridge(Point start, Point end, Color color) : base(start, end, color)
         {
             T = 11;
+        }
+        public override TRLine Convert()
+        {
+            T++;
+            return Recognize(this);
         }
     }
     public class RoadBridge : TRLine
@@ -341,6 +441,12 @@ namespace TrViewer
             T = 12;
             R = color.R; G = 0; B = 0;
         }
+             public override TRLine Convert()
+        {
+            T--;
+            return Recognize(this);
+        }
+    
     }
     public class TrafficLight : TRLine
     {
@@ -363,6 +469,7 @@ namespace TrViewer
         {
             T = 15;
         }
+        //конвертация должна происходить из карты путем присвоения следующего номера. Управлять номерами может толкьо тот, у кого они есть.
         public int Number
         {
             get
