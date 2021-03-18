@@ -43,10 +43,17 @@ namespace TrViewer
 			map.AddLines(additional,map.lines.GetLength(0)-1);
 			map.AddLines(additional_rails,0);
 			map.AddLines(additional_rails2,0);*/
-			string image_file = "test.png";
+
+
+			/*string image_file = "test.png";
 			var bmp = new Bitmap(image_file);
 			
-			map.AddLines(MakeGround(bmp),0);
+			map.AddLines(MakeGround(bmp),0);*/
+            for(int i=0;i<map.lines.GetLength(0);i++)
+            {
+                map.lines[i] = TRLine.Recognize(map.lines[i]);
+                Console.WriteLine(map.lines[i].GetType().ToString());
+            }
 			
 			//stop magic
 			sw.Stop();
