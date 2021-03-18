@@ -52,8 +52,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MapSource.cs" />
+    <Compile Include="TrRoute.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrLine.cs" />
+    <Compile Include="TrModelReference.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
