@@ -9,6 +9,7 @@ namespace TrViewer
     public class MapSource
     {
         const int in_game_route_count = 126;
+        const int MaxBounds=30000;
         string file;
         byte[] header;
         public TRLine[] lines;
@@ -28,7 +29,7 @@ namespace TrViewer
                 lines = new TRLine[line_count];
                 for (int i = 0; i < line_count; i++)
                 {
-                    lines[i] = new TRLine(br);
+                	lines[i] = TRLine.Recognize(new TRLine(br));
                 }
 
                 models_count = br.ReadInt32();
@@ -93,6 +94,18 @@ namespace TrViewer
             }
             lines = newer;
             MappingRouteReferences(start, additional.GetLength(0));
+        }
+        public void Move(int X, int Y)
+        {
+        	foreach(var l in lines)
+        	{
+        		if(l.SX+X>MaxBounds||l.SY+Y>MaxBounds||l.EX+X>MaxBounds||l.EY+Y>MaxBounds||
+        		   l.SX+X<0||l.SY+Y<0||l.EX+X<0||l.EY+Y<0) throw new ArgumentException("Moving over bounds");
+        		l.SX+=X;
+        		l.SY+=Y;
+        		l.EX+=X;
+        		l.EY+=Y;
+        	}
         }
         void MappingRouteReferences(int start, int offset)
         {
