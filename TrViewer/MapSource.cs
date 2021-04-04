@@ -28,7 +28,7 @@ namespace TrViewer
                 lines = new TRLine[line_count];
                 for (int i = 0; i < line_count; i++)
                 {
-                    lines[i] = new TRLine(br);
+                    lines[i] = TRLine.Recognize(new TRLine(br));
                 }
 
                 models_count = br.ReadInt32();
@@ -93,6 +93,13 @@ namespace TrViewer
             }
             lines = newer;
             MappingRouteReferences(start, additional.GetLength(0));
+        }
+        public void Move(int X, int Y)
+        {
+            for (int i = 0; i < line_count; i++)
+            {
+
+            }
         }
         void MappingRouteReferences(int start, int offset)
         {

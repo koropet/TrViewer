@@ -4,3 +4,9 @@ D:\TrViewer\TrViewer\TrViewer\bin\Debug\TrViewer.pdb
 D:\TrViewer\TrViewer\TrViewer\obj\Debug\TrViewer.csprojResolveAssemblyReference.cache
 D:\TrViewer\TrViewer\TrViewer\obj\Debug\TrViewer.exe
 D:\TrViewer\TrViewer\TrViewer\obj\Debug\TrViewer.pdb
+C:\Users\Петруха\Documents\GitHub\TrViewer\TrViewer\bin\Debug\TrViewer.pdb
+C:\Users\Петруха\Documents\GitHub\TrViewer\TrViewer\obj\Debug\TrViewer.csprojResolveAssemblyReference.cache
+C:\Users\Петруха\Documents\GitHub\TrViewer\TrViewer\obj\Debug\TrViewer.pdb
+C:\Users\Петруха\Documents\GitHub\TrViewer\TrViewer\bin\Debug\TrViewer.dll.config
+C:\Users\Петруха\Documents\GitHub\TrViewer\TrViewer\bin\Debug\TrViewer.dll
+C:\Users\Петруха\Documents\GitHub\TrViewer\TrViewer\obj\Debug\TrViewer.dll
