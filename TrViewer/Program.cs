@@ -51,13 +51,6 @@ namespace TrViewer
 			map.AddLines(MakeGround(bmp),0);*/
             for(int i=0;i<map.lines.GetLength(0);i++)
             {
-                map.lines[i] = TRLine.Recognize(map.lines[i]);
-                Console.WriteLine(map.lines[i].GetType().ToString());
-            }
-            Console.WriteLine("Converting...");
-            for (int i = 0; i < map.lines.GetLength(0); i++)
-            {
-                map.lines[i] = map.lines[i].Convert();
                 Console.WriteLine(map.lines[i].GetType().ToString());
             }
 
